@@ -1,0 +1,91 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+
+language: en
+early_access: false
+
+reviews:
+  high_level_summary: true
+  review_status: true
+  poem: false
+  collapse_walkthrough: false
+
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - main
+
+  # ---------------------------
+  # Ignore non-source folders
+  # ---------------------------
+  path_filters:
+    - "!node_modules/**"
+    - "!dist/**"
+    - "!.expo/**"
+    - "!android/**"
+    - "!ios/**"
+    - "!chatprac/**" # virtual env
+    - "!__pycache__/**"
+    - "!.venv/**"
+    - "!venv/**"
+    - "!.env"
+
+  # ---------------------------
+  # Path-specific instructions
+  # ---------------------------
+  path_instructions:
+    # ---------- Frontend ----------
+    - path: "**/*.{ts,tsx}"
+      instructions: |
+        Review this React Native (Expo) TypeScript code for:
+        - Correct React and React Native patterns
+        - Proper hook usage (useEffect, useCallback, useMemo)
+        - Avoiding unnecessary re-renders
+        - Clear component responsibility
+        - Safe async/await usage
+        - No console.log in production code
+        - Readable, maintainable structure
+
+    # ---------- Backend (Python / FastAPI / AI) ----------
+    - path: "**/*.py"
+      instructions: |
+        Review this Python backend code assuming:
+        - FastAPI is used for APIs
+        - LangGraph / agent-based AI architecture is used
+        - Postgres / Supabase for persistence
+
+        Focus on:
+        - Correct async/await usage (no blocking calls)
+        - FastAPI best practices (dependency injection, routers)
+        - Clear separation of concerns (api / services / infra / agents)
+        - Security (auth checks, no secret leakage, safe inputs)
+        - Proper error handling and HTTP status codes
+        - Stateless request handling where appropriate
+        - Clean function and module boundaries
+        - Avoid global mutable state
+        - Logging instead of print
+        - Maintainable, production-ready structure
+
+        For AI / agent code:
+        - Ensure tool boundaries are explicit
+        - No prompt leakage of secrets
+        - Reasonable memory usage patterns
+        - Clear orchestration logic (not monolithic functions)
+
+    # ---------- Documentation ----------
+    - path: "**/*.md"
+      instructions: |
+        Review README.md and documentation for:
+        - Clear project overview
+        - Architecture explanation
+        - Backend setup instructions
+        - Environment variables explanation
+        - API endpoints overview
+        - Usage examples
+
+        If README.md is missing or minimal:
+        - Propose a complete, professional README.md
+        - Suggest concrete sections and example content
+
+chat:
+  auto_reply: true
