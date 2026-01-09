@@ -1,0 +1,57 @@
+# ===============================
+# Python bytecode & cache
+# ===============================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ===============================
+# Virtual environments
+# ===============================
+venv/
+env/
+.venv/
+chatprac/          # local virtual environment
+pyvenv.cfg
+
+# ===============================
+# Environment variables / secrets
+# ===============================
+.env
+.env.*
+!.env.example
+
+# ===============================
+# Dependency / build artifacts
+# ===============================
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ===============================
+# Test / tooling caches
+# ===============================
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ===============================
+# Logs
+# ===============================
+*.log
+
+# ===============================
+# OS / Editor junk
+# ===============================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ===============================
+# Jupyter
+# ===============================
+.ipynb_checkpoints/
