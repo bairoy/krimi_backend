@@ -28,3 +28,5 @@ async def verify_supabase_jwt(token:str)->dict:
     raise HTTPException(status_code=401,detail="Invalid or expired token")
   
 
+  
+
